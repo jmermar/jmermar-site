@@ -1,0 +1,3 @@
+[submodule "WebCraft"]
+	path = WebCraft
+	url = https://github.com/NTImp/WebCraft.git
