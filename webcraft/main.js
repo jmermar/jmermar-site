@@ -9,6 +9,7 @@ class Player {
         this.height = 1.9;
         this.vspeed = 0.0;
         this.collision = true;
+        this.movingCamera = false;
 
         this.setGravityAndJump(1.2, 0.5);
     }
@@ -24,7 +25,6 @@ class Player {
         var iy = 0;
         var iz = 0;
 
-        this.vspeed -= this.gravity * delta;
         if (Input.keypress("w")) {
             iz -= Math.cos(glMatrix.toRadian(angle)) * delta * this.speed;
             ix += Math.sin(glMatrix.toRadian(angle)) * delta * this.speed;
@@ -45,25 +45,66 @@ class Player {
             ix -= Math.cos(glMatrix.toRadian(angle)) * delta * this.speed / 2;
         }
 
-        if (Input.keypress("jump") && this.ground) {
-            this.vspeed = this.jumpSpeed;
-        }
 
-        iy += this.vspeed * delta;
+
+        if (this.collision) {
+            this.vspeed -= this.gravity * delta;
+            if (Input.keypress("jump") && this.ground) {
+                this.vspeed = this.jumpSpeed;
+            }
+            iy += this.vspeed * delta;
+        } else {
+            if (Input.keypress("jump")) {
+                iy += this.speed * delta;;
+            }
+            if (Input.keypress("shift")) {
+                iy -= this.speed * delta;;
+            }
+        }
 
         if (Input.keypress("noclip")) {
             this.collision = false;
+            this.vspeed = 0;
         }
 
         if (Input.keypress("physics")) {
             this.collision = true;
         }
 
-        if (Input.mousePressed) {
+        if (Input.mousePressed != 0) {
+            this.pressing = true;
+            if (Math.abs(Input.deltaX) - 2 > 0 || Math.abs(Input.deltaY) - 2 > 0) this.movingCamera = true;
             this.rot[1] += Input.deltaX * delta * this.rotSpeed;
             this.rot[0] += Input.deltaY * delta * this.rotSpeed;
             if (this.rot[0] < -75) this.rot[0] = -75;
             if (this.rot[0] > 75) this.rot[0] = 75;
+        } else if (Input.mousePressed == 0) {
+            if (!this.movingCamera && this.pressing) {
+                var pCoords = world.render.screenToWorld(Input.mouseX, Input.mouseY);
+                vec3.sub(pCoords, pCoords, this.eyePos);
+                var rcast = new Raycast(world, this.eyePos, pCoords, 10);
+                var block = rcast.getBlock(0.05);
+                if (block != null) {
+                    //console.log(block.position);
+                    world.setBlock(block.position[0], block.position[1], block.position[2], "air");
+                }
+            }
+            this.pressing = false;
+            this.movingCamera = false;
+        }
+        if (Input.mouseRightPressed == 1) {
+            var pCoords = world.render.screenToWorld(Input.mouseX, Input.mouseY);
+            vec3.sub(pCoords, pCoords, this.eyePos);
+            var rcast = new Raycast(world, this.eyePos, pCoords, 10);
+            var block = rcast.getBlock(0.05);
+            if (block != null) {
+                //console.log(block.position);
+                world.setBlock(
+                    block.position[0] + block.normal[0],
+                    block.position[1] + block.normal[1],
+                    block.position[2] + block.normal[2],
+                    "stone");
+            }
         }
 
         if (this.collision == true) {
@@ -326,48 +367,97 @@ class World {
         noise.seed(Math.random());
         this.progress = 0.0;
 
-        var x = 0;
-        var z = 0;
-
         var t = this;
 
-        var fun = function() {
-            update();
-            t.generateChunk(x, z);
-            t.progress += 1.0 / (t.size * t.size);
-            x++;
-            if (x >= t.size) {
-                x = 0;
-                z++;
-                if (z >= t.size) {
-                    t.placePlayer();
-                    finish();
-                    return;
-                } 
+        var generate = function(generator, name, next) {
+            t.progress = 0;
+            var x = 0;
+            var z = 0;
+            var f = function() {
+                update(name);
+                generator(x, z);
+                t.progress += 1.0 / (t.size * t.size);
+                x++;
+                if (x >= t.size) {
+                    x = 0;
+                    z++;
+                    if (z >= t.size) {
+                        next();
+                        return;
+                    } 
+                }
+                requestAnimationFrame(f);
             }
-            requestAnimationFrame(fun);
-        };
+            requestAnimationFrame(f);
+        }
 
-        requestAnimationFrame(fun);
+        generate(t.generateChunkTerrain.bind(t), "Generating chunk terrain.",
+            function() {
+                generate(t.generateChunkCaves.bind(t), "Generating caves.",
+                    function() {
+                        generate(t.decorateChunk.bind(t), "Decorating chunks.", function() {
+                            t.placePlayer();
+                            finish();
+                        });
+                    });
+                });
     }
 
-    generateChunk(cx, cz) {
-        const waterLevel = 47;
+    generateChunkTerrain(cx, cz) {
+        const waterLevel = 49;
         for (var x = cx * this.cl; x < (cx + 1) * this.cl; x++) {
             for (var z = cz * this.cl; z < (cz + 1) * this.cl; z++) {
-                var h = Math.floor(50 + noise.simplex2(x / 50, z / 50) * 6);
+                var h = Math.floor(50 + noise.simplex2(x / 50, z / 50) * 4);
                 for (var y = 0; y < this.worldHeight; y++) {
-                    var n3d = noise.simplex3(x/16, y/10, z/16);
-                    if (y == 0) this.setBlock(x, y, z, "stone");
-                    else if (n3d > -0.5) {
-                        if (y == h) this.setBlock(x, y, z, "grass");
-                        else if (y < h && y > h - 5) this.setBlock(x, y, z, "dirt");
-                        else if (y <= h - 5) this.setBlock(x, y, z, "stone");
-                        else if(y <= waterLevel && n3d > -0.5) this.setBlock(x, y, z, "water");
-                        else this.setBlock(x, y, z, "air");
-                    } else {
-                        this.setBlock(x, y, z, "air");
+                    var block;
+                    if (y <= h) block = "stone";
+                    else if (y <= waterLevel) block = "water"
+                    else block = "air"
+
+                    this.setBlock(x, y, z, block);
+                }
+            }
+        }
+    }
+
+    generateChunkCaves(cx, cz) {
+        for (var x = cx * this.cl; x < (cx + 1) * this.cl; x++) {
+            for (var z = cz * this.cl; z < (cz + 1) * this.cl; z++) {
+                for (var y = 0; y < this.worldHeight; y++) {
+                    var n3d = ((y / 65) + noise.simplex3(x/12, y/10, z/12) * 3 + noise.simplex3(x / 80, y / 20, z / 80) * 10) / 14;
+                    var block = this.getBlock(x, y, z).name;
+                    if (n3d < -0.5 && block == "stone") block = "air";
+                    if (y== 0) block = "stone";
+
+                    this.setBlock(x, y, z, block);
+                }
+            }
+        }
+    }
+
+    decorateChunk(cx, cz) {
+        const dirtLevel = 4;
+        for (var x = cx * this.cl; x < (cx + 1) * this.cl; x++) {
+            for (var z = cz * this.cl; z < (cz + 1) * this.cl; z++) {
+                var h = -1;
+                for (var y = this.worldHeight - 1; y >= 0; y--) {
+                    var block = this.getBlock(x, y, z).name;
+                    var sblock = block;
+                    var u = this.getBlock(x, y + 1, z).name;
+                    if (h == -1 && block == "stone") {
+                        if (u == "air") {
+                            sblock = "grass";
+                            h = y;
+                        }
+                        if (u == "water") {
+                            sblock = "dirt";
+                            h = y;
+                        }
                     }
+                    if (u == "water" && block == "air") sblock = "water"
+                    else if (y >= h - dirtLevel && y < h) sblock = "dirt";
+
+                    this.setBlock(x, y, z, sblock);
                 }
             }
         }
@@ -381,12 +471,30 @@ class World {
         return blocks[this.map[y * this.worldLength * this.worldLength + z * this.worldLength + x]];
     }
 
+    updateChunk(x, y, z) {
+        if (x < 0 || x >= this.size || y < 0 || y >= this.height || z < 0 || z >= this.size) return;
+        var chunk = this.chunks.get(this.chunkHash(x, y, z));
+        if (chunk != null) {
+            chunk.dirty = true;
+        }
+    }
+
     setBlock(x, y, z, block) {
         if (x < 0 || x >= this.cl * this.size) return;
         if (z < 0 || z >= this.cl * this.size) return;
         if (y < 0 || y >= this.cl * this.height) return;
 
         this.map[y * this.worldLength * this.worldLength + z * this.worldLength + x] = this.blockMaps.get(block).id;
+        var cx = Math.floor(x / this.cl);
+        var cy = Math.floor(y / this.cl);
+        var cz = Math.floor(z / this.cl);
+        this.updateChunk(cx, cy, cz);
+        if (x % this.cl == 0) this.updateChunk(cx - 1, cy, cz);
+        if (y % this.cl == 0) this.updateChunk(cx, cy - 1, cz);
+        if (z % this.cl == 0) this.updateChunk(cx, cy, cz - 1);
+        if (x % this.cl - 1) this.updateChunk(cx + 1, cy, cz);
+        if (y % this.cl - 1) this.updateChunk(cx, cy + 1, cz);
+        if (z % this.cl - 1) this.updateChunk(cx, cy, cz + 1);
     }
 
     update(delta) {
@@ -407,6 +515,9 @@ class World {
     }
 }
 
+var rm = null;
+var world = null;
+
 function main() {
     document.getElementById("main_menu").hidden = true;
     document.getElementById("gen_info").hidden = false;
@@ -417,10 +528,10 @@ function main() {
     Input.init();
 
     const size = parseInt(document.getElementById("world_size").value);
-    var world = new World(size, 8, render);
+    world = new World(size, 8, render);
 
-    world.generateTerrain(function() {
-        gen_info.innerText = "Generating world.\nProgres: " + Math.floor(world.progress * 100) + "%.";
+    world.generateTerrain(function(info) {
+        gen_info.innerText = info + "\nProgres: " + Math.floor(world.progress * 100) + "%.";
     }, function() {
         gen_info.hidden = true;
         document.getElementById("glCanvas").hidden = false;

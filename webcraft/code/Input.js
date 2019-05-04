@@ -15,17 +15,23 @@ ax = mx;
 ay = my;
 dx = 0;
 dy = 0;
-mp = 0;
+mp = false;
+mrp = false;
+ms = 0;
+mrs = false;
 
 state = {}
+
+cx = 0
+cy = 0;
 
 class Input {
     static init() {
         document.addEventListener("keydown", Input.keydown);
         document.addEventListener("keyup", Input.keyup);
-        document.addEventListener("mousemove", Input.movemouse);
-        document.addEventListener("mousedown", Input.mousedown);
-        document.addEventListener("mouseup", Input.mouseup);
+        document.getElementById("glCanvas").addEventListener("mousemove", Input.movemouse);
+        document.getElementById("glCanvas").addEventListener("mousedown", Input.mousedown);
+        document.getElementById("glCanvas").addEventListener("mouseup", Input.mouseup);
     }
 
     static keypress(key) {
@@ -40,19 +46,33 @@ class Input {
     }
 
     static update() {
+        var rect = document.getElementById("glCanvas").getBoundingClientRect();
+        cx = rect.x;
+        cy = rect.y;
+
         dx = mx - ax;
         dy = my - ay;
         ay = my;
         ax = mx;
+        if (mp) {
+            ms = ms == 0 ? 1 : -1;
+        } else {
+            ms = 0;
+        }
 
+        if (mrp) {
+            mrs = mrs == 0 ? 1 : -1;
+        } else {
+            mrs = 0;
+        }
     }
 
     static get mouseX() {
-        return mx;
+        return mx - cx;
     }
 
     static get mouseY() {
-        return my;
+        return my - cy;
     }
 
     static get deltaX() {
@@ -64,7 +84,11 @@ class Input {
     }
 
     static get mousePressed() {
-        return mp;
+        return ms;
+    }
+
+    static get mouseRightPressed() {
+        return mrs;
     }
     
     static keydown(key) {
@@ -81,10 +105,12 @@ class Input {
     }
 
     static mousedown(mouse) {
-        if (mouse.buttons == 1) mp = true;
+        if (mouse.button == 0) mp = true;
+        if (mouse.button == 2) mrp = true;
     }
 
     static mouseup(mouse) {
-        if (mouse.buttons == 0) mp = false;
+        if (mouse.button == 0) mp = false;
+        if (mouse.button == 2) mrp = false;
     }
 };
