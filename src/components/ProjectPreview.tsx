@@ -4,6 +4,7 @@ interface Props {
   thumbNailSrc: string;
   title: string;
   children: ReactNode;
+  projectPath: string;
 }
 
 export default function ProjectPreview(props: Props) {
@@ -11,7 +12,9 @@ export default function ProjectPreview(props: Props) {
     <div className="project-preview">
       <img src={props.thumbNailSrc} alt={props.title}></img>
       <div>
-        <h2>{props.title}</h2>
+        <a href={props.projectPath}>
+          <h2>{props.title}</h2>
+        </a>
         <div className="project-content">{props.children}</div>
       </div>
     </div>
