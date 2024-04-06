@@ -27,9 +27,6 @@ export default function Header() {
             <Link to="/projects" className="col nav-btn">
               Projects
             </Link>
-            <Link to="/" className="col nav-btn">
-              Experience
-            </Link>
           </div>
         </nav>
       </div>
