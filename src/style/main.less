@@ -1,50 +1,78 @@
 @import "./variables.less";
 @import "./Home.less";
 @import "./Projects.less";
+@import "./global.less";
+
 body {
   background-color: @background !important;
 }
 
 header .header-content {
   margin: 0;
-  .centered {
+  margin-top: 2em;
+  h1 {
+    font-size: 56px;
+    color: @text;
+    margin-bottom: 0px;
+    filter: brightness(150%);
+    text-align: center;
+  }
+  h2 {
+    margin-top: 0px;
+    padding-top: 0px;
+    font-size: 34px;
+    color: @text;
+    text-align: center;
+    margin-bottom: 0.5em;
+  }
+  nav {
+    margin: 0;
+    display: flex;
+    padding: 0;
+
+    .nav-btn {
+      color: white;
+      font-size: 28px;
+      padding: 0 24px;
+      text-decoration: none;
+      margin: 0;
+    }
+    .separator {
+      padding: 0 !important;
+      width: 2px;
+      background-color: @text;
+      border-radius: 10px;
+      height: 60%;
+      margin-top: auto;
+      margin-bottom: auto;
+      box-shadow: 0 0 5px white;
+    }
+  }
+
+  .header-separator {
+    margin-top: 1em;
+    margin-bottom: 1em;
     width: @content-width;
     @media (max-width: @content-width) {
       width: 100%;
     }
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 12px;
-    padding-right: 12px;
-  }
-
-  h1,
-  h2 {
-    background-color: @header-background;
-    color: @header-color;
-    margin: 0;
-    font-size: 28px;
-  }
-  h2 {
-    padding-top: 0px;
-    font-size: 18px;
-  }
-  nav {
-    background-color: @navbar-background;
-    margin: 0;
-    display: flex;
-
-    .nav-btn {
-      color: @navbar-color;
-      text-decoration: none;
-    }
-    .nav-btn:hover {
-      background-color: #196e26;
-    }
+    height: 1px;
+    background-color: @text;
+    border-radius: 10px;
+    box-shadow: 0 0 5px white;
   }
 }
 
 .content {
+  width: @content-width;
+  @media (max-width: @content-width) {
+    width: 100%;
+  }
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 12px;
+  padding-right: 12px;
+
   padding: 12px;
   margin: auto;
   width: @content-width;
