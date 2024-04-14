@@ -1,21 +1,19 @@
-import { ReactNode } from "react";
+import { Link } from "react-router-dom";
+import { ProjectTemplate } from "../data/templates/ProjectTemplate";
 
 interface Props {
-  thumbNailSrc: string;
-  title: string;
-  children: ReactNode;
-  projectPath: string;
+  project: ProjectTemplate;
 }
 
 export default function ProjectPreview(props: Props) {
+  const { project } = props;
   return (
     <div className="project-preview">
-      <img src={props.thumbNailSrc} alt={props.title}></img>
+      <img src={project.thumbNailSrc} alt={project.title}></img>
       <div>
-        <a href={props.projectPath}>
-          <h2>{props.title}</h2>
-        </a>
-        <div className="project-content">{props.children}</div>
+        <h3>{project.title}</h3>
+        <div className="project-content">{project.previewText}</div>
+        <Link to={`/project/${project.id}`}>More info</Link>
       </div>
     </div>
   );
