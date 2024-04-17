@@ -20,7 +20,6 @@ function Project() {
       <Header />
       <div className="content page-project">
         <h3>{data.title}</h3>
-        <img src={data.thumbNailSrc}></img>
         <div className="project-content">{data.text}</div>
       </div>
     </>

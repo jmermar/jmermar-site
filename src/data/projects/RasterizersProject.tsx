@@ -1,9 +1,29 @@
 import { ProjectTemplate } from "../templates/ProjectTemplate";
-import rasterizer from "../../assets/rasterizer.gif";
+import rasterizer from "../../assets/rasterizer/rasterizer.gif";
+import slider1 from "../../assets/rasterizer/slider1.png";
+import slider2 from "../../assets/rasterizer/slider3.png";
+import slider3 from "../../assets/rasterizer/slider2.png";
 import { Link } from "react-router-dom";
+import "swiper/css";
+import ImagesSlider from "../../components/ImageSlider";
 
 const projectPath =
   "https://github.com/jmermar/TFG-Real-time-rendering/tree/master";
+
+const images = [
+  {
+    src: slider1,
+    text: "CPU Rasterizer that can display real time 3D scenes",
+  },
+  {
+    src: slider2,
+    text: "The OpenGL Powered rasterizer was able of displaying much more objects with more performance",
+  },
+  {
+    src: slider3,
+    text: "Lighting with PBR material properties such as roughness and metallic",
+  },
+];
 
 const RasterizersProject: ProjectTemplate = {
   id: "3d-rasterizers",
@@ -24,6 +44,7 @@ const RasterizersProject: ProjectTemplate = {
   ),
   text: (
     <>
+      <ImagesSlider images={images} />
       <p>
         This project consists on 3 3D rasterizers that I made as part of my
         degree's final project. The aim of the project was to research on
