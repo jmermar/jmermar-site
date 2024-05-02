@@ -5,10 +5,12 @@ import { ProjectTemplate } from "../data/templates/ProjectTemplate";
 import RasterizersProject from "../data/projects/RasterizersProject";
 import WebCraftProject from "../data/projects/WebcraftProject";
 import { useParams } from "react-router-dom";
+import VulkanRasterProject from "../data/projects/VulkanRasterProject";
 
 const ProjectMaps: { [key: string]: ProjectTemplate } = {
   "3d-rasterizers": RasterizersProject,
   webcraft: WebCraftProject,
+  "vulkan-3d-renderer": VulkanRasterProject,
 };
 
 function Project() {

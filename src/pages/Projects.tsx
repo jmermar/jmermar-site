@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import "bootstrap/dist/css/bootstrap.css";
 import RasterizersProject from "../data/projects/RasterizersProject";
 import WebCraftProject from "../data/projects/WebcraftProject";
+import VulkanRasterProject from "../data/projects/VulkanRasterProject";
 
 function Projects() {
   useEffect(() => {
@@ -20,8 +21,9 @@ function Projects() {
     <>
       <Header />
       <div className="content page-projects">
-        <ProjectPreview project={RasterizersProject}></ProjectPreview>
-        <ProjectPreview project={WebCraftProject}></ProjectPreview>
+        <ProjectPreview project={VulkanRasterProject} />
+        <ProjectPreview project={RasterizersProject} />
+        <ProjectPreview project={WebCraftProject} />
       </div>
     </>
   );

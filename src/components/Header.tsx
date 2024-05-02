@@ -17,11 +17,11 @@ export default function Header() {
         <h2 className="pixelify-font centered">Personal site</h2>
         <nav>
           <div className="row centered">
-            <Link to="/" className="col nav-btn pixelify-font">
+            <Link to="/about" className="col nav-btn pixelify-font">
               About
             </Link>
             <div className="separator"></div>
-            <Link to="/projects" className="col nav-btn pixelify-font">
+            <Link to="/" className="col nav-btn pixelify-font">
               Projects
             </Link>
           </div>

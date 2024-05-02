@@ -7,9 +7,9 @@ import Home from "./pages/Home.tsx";
 import Project from "./pages/Project.tsx";
 
 const router = createBrowserRouter([
-  { path: "/", element: <Home /> },
+  { path: "/about", element: <Home /> },
   {
-    path: "/projects",
+    path: "/",
     element: <Projects />,
   },
   {

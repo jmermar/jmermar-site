@@ -34,33 +34,32 @@ function Home() {
               <h3> Skills </h3>
               <ul>
                 <li>C/C++</li>
-                <li>Java</li>
-                <li>NodeJS</li>
-                <li>HTML/CSS</li>
-                <li>Javascript</li>
-                <li>Docker</li>
-                <li>Git</li>
-                <li>OpenGL</li>
                 <li>Vulkan</li>
+                <li>OpenGL</li>
+                <li>Java</li>
+                <li>Javascript</li>
               </ul>
             </div>
           </div>
           <div className="col-md-7">
             <h3>About</h3>
             <p>
-              Software engineer with professional experience with fullstack
-              development and great passion for programming. Altough I've worked
-              mainly in nodeJS ecosystem, I have great interest in other fields
-              such as Java, C++ and Computer Graphics.
+              Software developer with experience as fullstack developer in the
+              nodeJS ecosystem. I also have great interest in game development
+              and computer graphics, specially regarding low-level
+              multi-platform APIs such as OpenGL and Vulkan.
             </p>
             <p>
-              I consider myself a proactive person and a self-taught programmer,
-              which loves to discover a new technology every single day.
+              Despite having a CS degree in University of Murcia, I consider
+              myself a self-taught programmer, which great interest in finding
+              new things to learn, and also very interested in the math involved
+              in game development such as linear algebra and geometry.
             </p>
             <p>
-              I studied Computer Sience at University of Murcia in Spain, and
-              developed a final Project about real-time 3D rendering using
-              rasterization.
+              I'm also interested on low level aspects of programming such as
+              CPU and GPU architecture, and how to write efficient code that can
+              exploit the machine in which it is running, I'm specially
+              interested on cache usage and work parallelization.
             </p>
           </div>
         </div>
