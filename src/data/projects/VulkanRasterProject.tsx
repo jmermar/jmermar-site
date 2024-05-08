@@ -27,7 +27,7 @@ const VulkanRasterProject: ProjectTemplate = {
       <h3>Features</h3>
       <p>
         The project is intended to showcase some common solutions regarding
-        Graphics Application optimizations, specifically, it supports frustum
+        Computer Graphics optimizations, specifically, it supports frustum
         culling from CPU and Forward+ (or tiled) rendering for displaying a lot
         of lights in the scene. It also supports frames in flight in order to
         not stall the GPU waiting for the CPU to finish sending all commands to
@@ -49,14 +49,14 @@ const VulkanRasterProject: ProjectTemplate = {
         The Forward+ rendering implementation is based on{" "}
         <Link to="https://takahiroharada.files.wordpress.com/2015/04/forward_plus.pdf">
           this paper
-        </Link>
+        </Link>{" "}
         and does all calculations on GPU with a Compute Shader.
       </p>
       <p>
         It works by splitting the render framebuffer in tiles of 16x16 pixels
-        and precalculating which light interact with each of those tiles, so the
-        fragment shaders only needs to iterate on the lights affecting the tile
-        which each pixel falls into, instead of all the light sources.
+        and precalculating which lights interact with each of those tiles, so
+        the fragment shaders only needs to iterate on the lights affecting the
+        tile which each pixel falls into, instead of all the light sources.
       </p>
       <p>
         The software can display thousands of lights in a very performant way,
