@@ -1,5 +1,5 @@
 import { ProjectTemplate } from "../templates/ProjectTemplate";
-import image1 from "../../assets/vulkan/banner.jpeg";
+import image1 from "../../assets/vulkan/banner.png";
 import { Link } from "react-router-dom";
 import "swiper/css";
 
