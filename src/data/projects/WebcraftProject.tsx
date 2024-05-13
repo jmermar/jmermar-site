@@ -18,6 +18,7 @@ const WebCraftProject: ProjectTemplate = {
   ),
   text: (
     <>
+      <img src={thumbnail} />
       <p>
         Simple minecraft clone made using javascript + webgl. I didn't updated
         the project for a long time, except for refactoring it in order to use

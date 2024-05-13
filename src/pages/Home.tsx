@@ -22,22 +22,20 @@ function Home() {
         <article className="page-home">
           <h3>About</h3>
           <p>
-            Software developer with experience as fullstack developer in the
-            nodeJS ecosystem. I also have great interest in game development and
-            computer graphics, specially regarding low-level multi-platform APIs
-            such as OpenGL and Vulkan.
+            Computer Scientist with experience as full stack software
+            development. Here I share my personal projects mostly related to
+            computer graphics and game development.
           </p>
           <p>
-            Despite having a CS degree in University of Murcia, I consider
-            myself a self-taught programmer, which great interest in finding new
-            things to learn, and also very interested in the math involved in
-            game development such as linear algebra and geometry.
+            I studied a degree of computer Science in University of Murcia,
+            where I specialized on Theory of Computation and Artificial
+            Intelligence.
           </p>
           <p>
-            I'm also interested on low level aspects of programming such as CPU
-            and GPU architecture, and how to write efficient code that can
-            exploit the machine in which it is running, I'm specially interested
-            on cache usage and work parallelization.
+            One of my main interests is low level graphics programming using
+            APIs like OpenGL and Vulkan, and studying GPU and CPU architecture
+            in order to improve rendering performance. Im also interested in web
+            development, cryptography and Computer Vision.
           </p>
         </article>
       </div>
