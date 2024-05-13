@@ -20,10 +20,13 @@ function Projects() {
   return (
     <>
       <Header />
-      <div className="content page-projects">
-        <ProjectPreview project={VulkanRasterProject} />
-        <ProjectPreview project={RasterizersProject} />
-        <ProjectPreview project={WebCraftProject} />
+      <div className="content">
+        <div className="sidebar"></div>
+        <article className="page-projects">
+          <ProjectPreview project={VulkanRasterProject} />
+          <ProjectPreview project={RasterizersProject} />
+          <ProjectPreview project={WebCraftProject} />
+        </article>
       </div>
     </>
   );

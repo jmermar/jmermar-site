@@ -13,20 +13,17 @@ export default function Header() {
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
       ></link>
       <div className="header-content">
-        <h1 className="pixelify-font centered">José Meroño Martínez's</h1>
-        <h2 className="pixelify-font centered">Personal site</h2>
+        <h1 className="menuElement">José Meroño's Homepage</h1>
         <nav>
-          <div className="row centered">
-            <Link to="/about" className="col nav-btn pixelify-font">
+          <div className="">
+            <Link to="/about" className="col nav-btn menuElement">
               About
             </Link>
-            <div className="separator"></div>
-            <Link to="/" className="col nav-btn pixelify-font">
+            <Link to="/" className="col nav-btn menuElement">
               Projects
             </Link>
           </div>
         </nav>
-        <div className="header-separator centered"></div>
       </div>
     </header>
   );

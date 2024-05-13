@@ -20,9 +20,12 @@ function Project() {
   return (
     <>
       <Header />
-      <div className="content page-project">
-        <h3>{data.title}</h3>
-        <div className="project-content">{data.text}</div>
+      <div className="content">
+        <div className="sidebar"></div>
+        <article className="page-project">
+          <h3>{data.title}</h3>
+          <div className="project-content">{data.text}</div>
+        </article>
       </div>
     </>
   );
