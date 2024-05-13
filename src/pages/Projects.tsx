@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import RasterizersProject from "../data/projects/RasterizersProject";
 import WebCraftProject from "../data/projects/WebcraftProject";
 import VulkanRasterProject from "../data/projects/VulkanRasterProject";
+import Sidebar from "../components/Sidebar";
 
 function Projects() {
   useEffect(() => {
@@ -21,7 +22,7 @@ function Projects() {
     <>
       <Header />
       <div className="content">
-        <div className="sidebar"></div>
+        <Sidebar />
         <article className="page-projects">
           <ProjectPreview project={VulkanRasterProject} />
           <ProjectPreview project={RasterizersProject} />

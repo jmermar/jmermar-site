@@ -13,7 +13,9 @@ export default function Header() {
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
       ></link>
       <div className="header-content">
-        <h1 className="menuElement">José Meroño's Homepage</h1>
+        <h1 className="menuElement">
+          <strong>José Meroño's</strong> Homepage
+        </h1>
         <nav>
           <div className="">
             <Link to="/about" className="col nav-btn menuElement">

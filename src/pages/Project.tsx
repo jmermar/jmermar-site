@@ -6,6 +6,7 @@ import RasterizersProject from "../data/projects/RasterizersProject";
 import WebCraftProject from "../data/projects/WebcraftProject";
 import { useParams } from "react-router-dom";
 import VulkanRasterProject from "../data/projects/VulkanRasterProject";
+import Sidebar from "../components/Sidebar";
 
 const ProjectMaps: { [key: string]: ProjectTemplate } = {
   "3d-rasterizers": RasterizersProject,
@@ -21,7 +22,7 @@ function Project() {
     <>
       <Header />
       <div className="content">
-        <div className="sidebar"></div>
+        <Sidebar />
         <article className="page-project">
           <h3>{data.title}</h3>
           <div className="project-content">{data.text}</div>
