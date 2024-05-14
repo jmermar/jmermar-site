@@ -18,15 +18,18 @@ const WebCraftProject: ProjectTemplate = {
   ),
   text: (
     <>
-      <img src={thumbnail} />
+      <iframe
+        className="embedd"
+        frameBorder="0"
+        src="https://itch.io/embed-upload/8492139?color=193d3f"
+        allowFullScreen={true}
+      >
+        <a href="https://jo65.itch.io/webcraft">Play WebCraft on itch.io</a>
+      </iframe>
       <p>
         Simple minecraft clone made using javascript + webgl. I didn't updated
         the project for a long time, except for refactoring it in order to use
         webpack, so it is pretty much abandoned.
-      </p>
-      <p>
-        As the game is hosted in itch io you can play it{" "}
-        <Link to={itchIOPath}>here</Link>.
       </p>
       <p>
         Currently it support the next features:
