@@ -2,7 +2,6 @@ import { ProjectTemplate } from "../templates/ProjectTemplate";
 import thumbnail from "../../assets/webcraft.png";
 import { Link } from "react-router-dom";
 const projectPath = "https://github.com/jmermar/WebCraft";
-const itchIOPath = "https://jo65.itch.io/webcraft";
 const WebCraftProject: ProjectTemplate = {
   id: "webcraft",
   title: "Webcraft",
