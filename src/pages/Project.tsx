@@ -7,11 +7,13 @@ import WebCraftProject from "../data/projects/WebcraftProject";
 import { useParams } from "react-router-dom";
 import VulkanRasterProject from "../data/projects/VulkanRasterProject";
 import Sidebar from "../components/Sidebar";
+import VulkanTerrainProject from "../data/projects/VulkanTerrainProject";
 
 const ProjectMaps: { [key: string]: ProjectTemplate } = {
   "3d-rasterizers": RasterizersProject,
   webcraft: WebCraftProject,
   "vulkan-3d-renderer": VulkanRasterProject,
+  "vulkan-terrain-renderer": VulkanTerrainProject,
 };
 
 function Project() {
