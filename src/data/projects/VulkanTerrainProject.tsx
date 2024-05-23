@@ -1,7 +1,6 @@
 import { ProjectTemplate } from "../templates/ProjectTemplate";
 import image1 from "../../assets/vulkan/terrain/banner.png";
 import waterGif from "../../assets/vulkan/terrain/water.gif";
-import dudv from "../../assets/vulkan/terrain/dudv.png";
 import { Link } from "react-router-dom";
 import "swiper/css";
 
@@ -35,7 +34,8 @@ const VulkanTerrainProject: ProjectTemplate = {
       <h3>Passes</h3>
       <p>
         Currently the renderer consits of three passes, patch generation, depth
-        prepass and forward rendering
+        prepass and forward rendering. For each patch generated, it will also
+        create a quad serving as water surface for latter passes.
       </p>
       <h4> Patch generation</h4>
       <p>
