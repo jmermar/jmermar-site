@@ -20,7 +20,17 @@ const VulkanTerrainProject: ProjectTemplate = {
   ),
   text: (
     <>
-      <img src={image1} />
+      <div className="video-responsive">
+        <iframe
+          width="800"
+          height="450"
+          src={`https://www.youtube.com/embed/PwTlpPUrfv4`}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          title="Embedded youtube"
+        />
+      </div>
       <p>
         Vulkan Forward procedural terrain renderer using tessellation shaders
         for dynamic LOD and simplex noise for procedural heightmap generation.
