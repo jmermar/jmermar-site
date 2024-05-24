@@ -24,7 +24,7 @@ const VulkanTerrainProject: ProjectTemplate = {
         <iframe
           width="800"
           height="450"
-          src={`https://www.youtube.com/embed/PwTlpPUrfv4`}
+          src={`https://www.youtube.com/embed/7c5PGedes9U`}
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
