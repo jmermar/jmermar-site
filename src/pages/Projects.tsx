@@ -9,6 +9,7 @@ import WebCraftProject from "../data/projects/WebcraftProject";
 import VulkanRasterProject from "../data/projects/VulkanRasterProject";
 import Sidebar from "../components/Sidebar";
 import VulkanTerrainProject from "../data/projects/VulkanTerrainProject";
+import FbmWaterProject from "../data/projects/FbmWaterProject";
 
 function Projects() {
   useEffect(() => {
@@ -25,8 +26,9 @@ function Projects() {
       <div className="content">
         <Sidebar />
         <article className="page-projects">
-          <ProjectPreview project={VulkanRasterProject} />
+          <ProjectPreview project={FbmWaterProject} />
           <ProjectPreview project={VulkanTerrainProject} />
+          <ProjectPreview project={VulkanRasterProject} />
           <ProjectPreview project={RasterizersProject} />
           <ProjectPreview project={WebCraftProject} />
         </article>
