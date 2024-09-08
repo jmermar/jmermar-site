@@ -21,21 +21,13 @@ function Home() {
         <Sidebar />
         <article className="page-home">
           <h3>About</h3>
+          <p>Game developer and Computer Graphics enthusiast.</p>
           <p>
-            Computer Scientist with experience as full stack software
-            development. Here I share my personal projects mostly related to
-            computer graphics and game development.
+            Here I'll post my most relevant works on both games and personal
+            projects.
           </p>
           <p>
-            I studied a degree of computer Science in University of Murcia,
-            where I specialized on Theory of Computation and Artificial
-            Intelligence.
-          </p>
-          <p>
-            One of my main interests is low level graphics programming using
-            APIs like OpenGL and Vulkan, and studying GPU and CPU architecture
-            in order to improve rendering performance. Im also interested in web
-            development, cryptography and Computer Vision.
+            I'm currently studying a CS master on Computer Vision and Robotics.
           </p>
         </article>
       </div>

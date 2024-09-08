@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import resume from "../assets/resume.pdf";
 
 export default function Header() {
   return (
@@ -15,20 +14,20 @@ export default function Header() {
       ></link>
       <div className="header-content">
         <h1 className="menuElement">
-          <Link to="/about">
+          <Link to="/">
             <strong>jmermar's</strong> Homepage
           </Link>
         </h1>
 
         <nav>
-          <Link to="/about" className="col nav-btn menuElement">
+          <Link to="/" className="col nav-btn menuElement">
             <div>About</div>
           </Link>
-          <Link to="/" className="col nav-btn menuElement">
+          <Link to="/projects" className="col nav-btn menuElement">
             <div>Projects</div>
           </Link>
-          <Link to={resume} target="_blank" className="col nav-btn menuElement">
-            <div>Resume</div>
+          <Link to="/games" className="col nav-btn menuElement">
+            <div>Games</div>
           </Link>
         </nav>
       </div>

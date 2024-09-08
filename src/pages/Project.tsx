@@ -3,19 +3,21 @@ import Header from "../components/Header";
 import "bootstrap/dist/css/bootstrap.css";
 import { ProjectTemplate } from "../data/templates/ProjectTemplate";
 import RasterizersProject from "../data/projects/RasterizersProject";
-import WebCraftProject from "../data/projects/WebcraftProject";
+import WebCraftGame from "../data/projects/WebcraftGame";
 import { useParams } from "react-router-dom";
 import VulkanRasterProject from "../data/projects/VulkanRasterProject";
 import Sidebar from "../components/Sidebar";
 import VulkanTerrainProject from "../data/projects/VulkanTerrainProject";
 import FbmWaterProject from "../data/projects/FbmWaterProject";
+import SnakeGame from "../data/projects/SnakeGame";
 
 const ProjectMaps: { [key: string]: ProjectTemplate } = {
   "3d-rasterizers": RasterizersProject,
-  webcraft: WebCraftProject,
+  webcraft: WebCraftGame,
   "vulkan-3d-renderer": VulkanRasterProject,
   "vulkan-terrain-renderer": VulkanTerrainProject,
   "fbm-water": FbmWaterProject,
+  snakegame: SnakeGame,
 };
 
 function Project() {
