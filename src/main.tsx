@@ -16,7 +16,9 @@ const router = createBrowserRouter([
     path: "/project/:id",
     element: <Project />,
   },
-]);
+], {
+  basename: "/jmermar-site"
+});
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
