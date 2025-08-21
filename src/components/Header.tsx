@@ -26,9 +26,6 @@ export default function Header() {
           <Link to="/projects" className="col nav-btn menuElement">
             <div>Projects</div>
           </Link>
-          <Link to="/games" className="col nav-btn menuElement">
-            <div>Games</div>
-          </Link>
         </nav>
       </div>
     </header>
