@@ -19,6 +19,7 @@ function Home() {
       <Header />
       <div className="content">
         <Sidebar />
+
         <article className="page-home">
           <h3>About</h3>
           <p>I'm Jose Meroño Martinez, a developer with a degree on Computer Science based in Spain. I've worked mainly as a web developer in technologies such as NodeJs and Java.
