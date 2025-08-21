@@ -5,21 +5,12 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Projects from "./pages/Projects.tsx";
 import Home from "./pages/Home.tsx";
 import Project from "./pages/Project.tsx";
-import Games from "./pages/Games.tsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
   {
     path: "/projects",
     element: <Projects />,
-  },
-  {
-    path: "/games",
-    element: <Games />,
-  },
-  {
-    path: "/games:id",
-    element: <Project />,
   },
   {
     path: "/project/:id",

@@ -7,13 +7,12 @@ const projectPath = "https://github.com/jmermar/Vulkan-Water-Renderer";
 
 const FbmWaterProject: ProjectTemplate = {
   id: "fbm-water",
-  title: "Fractional Brownian Motion Ocean Simulation",
+  title: "Vulkan Water Renderer",
   thumbNailSrc: image1,
   previewText: (
     <>
       <p>
-        Ocean Simulation with Fractional Brownian Motion and environment
-        reflections.
+        Water Renderer using Vulkan and C++, based on Fractional Brownian Motion and Gerstner Waves.
       </p>
     </>
   ),
@@ -21,32 +20,28 @@ const FbmWaterProject: ProjectTemplate = {
     <>
       <img src={image1} />
       <p>
-        {" "}
-        Ocean simulation with Fractional Brownian Motion waves and environment
-        reflections
+        Water Renderer made with Vulkan and C++, using Fractional Brownian Motion and Gerstner Waves.
       </p>
       <p>
-        The water is composed of a flat plane with lots of vertices, each vertex
-        shader the vertex height will be calculated by a wave height function as
-        described{" "}
+        <Link to="https://www.youtube.com/watch?v=oVUQuddr_cI">
+        Video demonstration.
+        </Link>
+      </p>
+      <p>
+        This projects implements the water rendering techniques described{" "}
         <Link to="https://developer.nvidia.com/gpugems/gpugems/part-i-natural-effects/chapter-1-effective-water-simulation-physical-models">
           {" "}
           in this article
-        </Link>
-        . In addition, Fractional Brownian Motion is used for getting finer
-        details on waves.
+        </Link> as well as using Fractional Brownian Motion and PBR shading.
       </p>
       <p>
-        Water normals are calculated per fragment for getting finer details, by
-        derivating the wave heigth function.
+        Apart from water rendering, tessellation based dynamic LOD and compute shader have been used to make the ocean look infinite.
       </p>
       <p>
-        The water shader uses Lambertian Diffuse for diffuse lighting as well as
-        bling specular lighting. For reflections Shlick's Fresnel approximation
-        is being used along an environment map for getting the reflection color.
+        In the demo a user interface is provided to play with the water parameters, as well as selecting one of tho presets, one consisting on open sea and the other being calm water.
       </p>
       <p>
-        <Link to={projectPath}>Project github page</Link>
+        More info on the <Link to={projectPath}>project's github page</Link>.
       </p>
     </>
   ),
