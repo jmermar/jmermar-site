@@ -2,7 +2,7 @@ import { ProjectTemplate } from "../templates/ProjectTemplate";
 import image1 from "../../assets/aablocks.png";
 import "swiper/css";
 
-const projectPath = "https://github.com/jmermar/Vulkan-Water-Renderer";
+const projectPath = "https://github.com/jmermar/AABBlocks";
 
 const AABlocks: ProjectTemplate = {
   id: "aablocks",
