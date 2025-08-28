@@ -10,6 +10,7 @@ import Sidebar from "../components/Sidebar";
 import VulkanTerrainProject from "../data/projects/VulkanTerrainProject";
 import FbmWaterProject from "../data/projects/FbmWaterProject";
 import SnakeGame from "../data/projects/SnakeGame";
+import AABlocks from "../data/projects/AABlocks";
 
 const ProjectMaps: { [key: string]: ProjectTemplate } = {
   "3d-rasterizers": RasterizersProject,
@@ -18,6 +19,7 @@ const ProjectMaps: { [key: string]: ProjectTemplate } = {
   "vulkan-terrain-renderer": VulkanTerrainProject,
   "fbm-water": FbmWaterProject,
   snakegame: SnakeGame,
+  aablocks: AABlocks,
 };
 
 function Project() {
@@ -31,7 +33,7 @@ function Project() {
         <Sidebar />
         <article className="page-project">
           <h3>{data.title}</h3>
-          <div className="project-content">{data.text}</div>
+          
         </article>
       </div>
     </>

@@ -1,10 +1,5 @@
-import { ReactNode } from "react";
-
 export type ProjectTemplate = {
-  id: string;
-  thumbNailSrc: string;
-  title: string;
-  previewText: ReactNode;
-
-  text: ReactNode;
+  id: string; thumbNailSrc: string; title: string; previewText: string;
+  link: string;
+  tech: string;
 };
