@@ -15,18 +15,9 @@ export default function Header() {
       <div className="header-content">
         <h1 className="menuElement">
           <Link to="/">
-            <strong>jmermar's</strong> Homepage
+            <strong>jmermar's</strong> portfolio
           </Link>
         </h1>
-
-        <nav>
-          <Link to="/" className="col nav-btn menuElement">
-            <div>About</div>
-          </Link>
-          <Link to="/projects" className="col nav-btn menuElement">
-            <div>Projects</div>
-          </Link>
-        </nav>
       </div>
     </header>
   );

@@ -3,21 +3,11 @@ import ReactDOM from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Projects from "./pages/Projects.tsx";
-import Home from "./pages/Home.tsx";
-import Project from "./pages/Project.tsx";
 
 const router = createBrowserRouter([
-  { path: "/", element: <Home /> },
-  {
-    path: "/projects",
-    element: <Projects />,
-  },
-  {
-    path: "/project/:id",
-    element: <Project />,
-  },
+  { path: "/", element: <Projects /> },
 ], {
-  basename: "/jmermar-site"
+  basename: "/portfolio",
 });
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

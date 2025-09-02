@@ -7,6 +7,8 @@ export default function Sidebar() {
         <img className="profile-pic" src={profile}></img>
         <h3>José Meroño Martínez</h3>
         <p>Computer Scientist and software developer from Spain.</p>
+        <p>I'm a Computer Graphics and game development enthusiats, having strong C/C++ skills and learning about modern OpenGL (4.5+) and Vulkan (1.3+).</p>
+        <p> I've also worked in the web development industry, mainly with NodeJS and MongoDB and SQL databases.</p>
       </div>
       <div className="contact">
         <h3>Contact</h3>

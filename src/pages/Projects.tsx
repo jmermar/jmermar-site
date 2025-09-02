@@ -26,11 +26,11 @@ function Projects() {
         <Sidebar />
         <article className="page-projects">
           <article className="introduction">
-            <h3>Peronal projects</h3>
-            <p>These are some of the projects in which I've worked and that are public in my Github.</p>
+            <h3>Projects</h3>
+            <p>Showcase of some of the projects I'm developed, all of them are public on my Github.</p>
           </article>
-          <ProjectPreview project={FbmWaterProject} />
           <ProjectPreview project={AABlocks} />
+          <ProjectPreview project={FbmWaterProject} />
           <ProjectPreview project={VulkanRasterProject} />
           <ProjectPreview project={WebCraftGame} />
         </article>
